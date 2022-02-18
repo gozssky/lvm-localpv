@@ -173,7 +173,7 @@ func (c *VolController) getVgPriorityList(vol *apis.LVMVolume) ([]apis.VolumeGro
 
 	// prioritize the volume group having less free space available.
 	sort.SliceStable(filteredVgs, func(i, j int) bool {
-		return filteredVgs[i].Free.Cmp(filteredVgs[j].Free) < 0
+		return filteredVgs[i].Free.Cmp(filteredVgs[j].Free) > 0
 	})
 	return filteredVgs, nil
 }
